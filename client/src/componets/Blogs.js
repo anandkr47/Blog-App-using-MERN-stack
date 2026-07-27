@@ -12,7 +12,8 @@ const Blogs = () => {
     const res = await axios
       .get(`${config.BASE_URL}/api/blogs`)
       .catch((err) => console.log(err));
-    return res && res.data;
+    // Backend wraps payloads as ApiResponse -> { data: { blogs } }.
+    return res && res.data && res.data.data;
   };
 
   useEffect(() => {
